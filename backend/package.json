@@ -1,0 +1,35 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yeferal/ecommerce_SS1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yeferal/ecommerce_SS1/issues"
+  },
+  "homepage": "https://github.com/Yeferal/ecommerce_SS1#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.1",
+    "colors": "^1.4.0",
+    "express": "^4.17.2",
+    "express-mysql-session": "^2.1.7",
+    "express-session": "^1.17.2",
+    "mysql2": "^2.3.3",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0",
+    "sequelize": "^7.0.0-alpha.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
