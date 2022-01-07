@@ -34,3 +34,5 @@ const Sale = sequelize.define('Sale', {
     tableName: 'Venta',
     timestamps: false
 });
+
+module.exports = Sale;

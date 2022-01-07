@@ -34,3 +34,5 @@ const ListOrder = sequelize.define('ListOrder', {
     tableName: 'Lista_Orden',
     timestamps: false
 });
+
+module.exports = ListOrder;

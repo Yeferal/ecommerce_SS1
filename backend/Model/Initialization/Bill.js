@@ -26,3 +26,5 @@ const Bill = sequelize.define('Bill', {
     tableName: 'Factura',
     timestamps: false
 });
+
+module.exports = Bill;

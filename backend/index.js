@@ -35,7 +35,7 @@ require('./Controller/Socket')(io);
 
 //Db
 const sequelize = require("./Model/Db");
-// const Models = require('./Model/CreateModels');
+const Models = require('./Model/CreateModels');
 
 const {database} = require('./key');
 
@@ -61,7 +61,7 @@ const MySQLStore = require('express-mysql-session')
 // const Contact = require('./Routes/ContactRoutes');
 
 //inicializaciones
-// require('./Lib/Passport');
+require('./Lib/Passport');
 
 
 //middleware
@@ -127,7 +127,7 @@ server.listen(PORT, function(){
 
     //Conexion a la base de datos
 //    sequelize.query('SET FOREIGN_KEY_CHECKS = 0').then(
-        sequelize.sync({force: true}).then(() => {
+        sequelize.sync({force: false}).then(() => {
         console.log("Conexion a DB establecida".green);
     }).catch(error => {
         console.log("Se ha producido un error al momento de intentar conectar con la db".red,error);
