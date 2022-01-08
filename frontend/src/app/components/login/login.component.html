@@ -1,34 +1,52 @@
 <app-preloader></app-preloader>
-<div class="loader">
-    <div class="loader-inner">
-        <div class="circle"></div>
-    </div>
-</div>
     <!-- hero area -->
 	<div class="hero-area hero-bg">
 		<div class="container">
+            
 			<div class="row">
 				<div class="col-lg-9 offset-lg-2 text-center">
 					<div class="hero-text">
+                        <!-- logo -->
 						<div class="hero-text-tablecell">
 							<!-- <p class="subtitle">Fresh & Organic</p> -->
-							<h1>Sing In</h1>
+							<div>
+                                <a>
+                                    <img src="../../../assets/img/logo.png" alt="">
+                                </a>
+                            </div>
+                            <!-- <hr> -->
+                            <!-- logo -->
+                            <h1>Sign In</h1>
                             <!-- contact form -->
                             <!-- <div class="contact-from-section mt-150 mb-150"> -->
                                 <div class="container">
                                     <div class="row" style="margin: auto; justify-content: center;">
                                         <div class="col-lg-8 mb-5 mb-lg-0">
                                             <!-- <div id="form_status"></div> -->
-                                            <div class="contact-form" style="">
-                                                <form type="POST" id="fruitkha-contact" onSubmit="return valid_datas( this );">
+                                            <div class="contact-form">
+                                                <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)" id="fruitkha-contact">
                                                     <p>
-                                                        <input  type="text" placeholder="Name" name="name" id="name">
+                                                        <label *ngIf="errorMsj" style="color: red;">{{msj}}</label>
+                                                    </p>
+                                                    <p>
+                                                        <input  
+                                                        [class.inp-invalid]="loginForm.get('user')?.errors && loginForm.get('user')?.touched"
+                                                        formControlName="user" type="text" placeholder="DPI" name="dpi" id="dpi" [required]="true" [required]="true">
+                                                        
                                                         <!-- <input type="email" placeholder="Email" name="email" id="email"> -->
                                                     </p>
                                                     <p>
-                                                        <input type="password" placeholder="Password" name="password" id="password">
+                                                        <label *ngIf="loginForm.get('user')?.errors && loginForm.get('user')?.touched" style="color: red;">El campo DPI debe llenarlo</label>
+                                                    </p>
+                                                    <p>
+                                                        <input 
+                                                        [class.inp-invalid]="loginForm.get('password')?.errors && loginForm.get('password')?.touched" 
+                                                        formControlName="password" type="password" class="is-valid" placeholder="Password" name="password" id="password" [required]="true">
                                                         <!-- <input style="margin-right: 10px;" type="tel" placeholder="Phone" name="phone" id="phone"> -->
                                                         <!-- <input type="text" placeholder="Subject" name="subject" id="subject"> -->
+                                                    </p>
+                                                    <p>
+                                                        <label *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" style="color: red;">El campo Password debe llenarlo</label>
                                                     </p>
                                                     <!-- <p><textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea></p> -->
                                                     <!-- <input type="hidden" name="token" value="FsWga4&@f6aw" /> -->

@@ -10,18 +10,19 @@ import { RegisterComponent } from './components/register/register.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { SingleProductComponent } from './components/single-product/single-product.component';
 import { EnterGuard } from './guards/enter.guard';
+import { LogoutGuard } from './guards/logout.guard';
 
 const routes: Routes = [
   {path:'', redirectTo:'login', pathMatch:'full'},
-  {path: 'register', component: RegisterComponent},
+  {path: 'register', component: RegisterComponent, canActivate: [EnterGuard]},
   {path: 'login', component: LoginComponent, canActivate: [EnterGuard]},
-  {path: 'home', component: HomeComponent},
-  {path: 'about', component: AboutComponent},
-  {path: 'contact', component: ContactComponent},
-  {path: 'shop', component: ShopComponent},
-  {path: 'checkout', component: CheckoutComponent},
-  {path: 'single-product', component: SingleProductComponent},
-  {path: 'cart', component: CartComponent},
+  {path: 'home', component: HomeComponent, canActivate: [LogoutGuard]},
+  {path: 'about', component: AboutComponent, canActivate: [LogoutGuard]},
+  {path: 'contact', component: ContactComponent, canActivate: [LogoutGuard]},
+  {path: 'shop', component: ShopComponent, canActivate: [LogoutGuard]},
+  {path: 'checkout', component: CheckoutComponent, canActivate: [LogoutGuard]},
+  {path: 'single-product', component: SingleProductComponent, canActivate: [LogoutGuard]},
+  {path: 'cart', component: CartComponent, canActivate: [LogoutGuard]},
   // {path: 'home', component: HomeComponent},
 ];
 

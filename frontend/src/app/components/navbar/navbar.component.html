@@ -7,7 +7,7 @@
                 <div class="main-menu-wrap">
                     <!-- logo -->
                     <div class="site-logo">
-                        <a routerLink="/">
+                        <a routerLink="/home">
                             <img src="../../../assets/img/logo.png" alt="">
                         </a>
                     </div>
@@ -16,7 +16,7 @@
                     <!-- menu start -->
                     <nav class="main-menu">
                         <ul>
-                            <li class="current-list-item"><a routerLink="/">Home</a>
+                            <li class="current-list-item"><a routerLink="/home">Home</a>
                                 <!-- <ul class="sub-menu">
                                     <li><a routerLink="/">Static Home</a></li>
                                     <li><a href="index_2.html">Slider Home</a></li>
@@ -54,6 +54,14 @@
                                     <!-- <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a> -->
                                     <button class="btn btn-primary-outline shopping-cart" style="background-color: transparent; border-color: transparent;"><span class="fas fa-shopping-cart"></span></button>
                                     <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                    <li><a>Shop</a>
+                                        <ul class="sub-menu">
+                                            <li><a (click)="logout()">Logout</a></li>
+                                            <!-- <li><a routerLink="/checkout">Check Out</a></li>
+                                            <li><a routerLink="/single-product">Single Product</a></li>
+                                            <li><a routerLink="/cart">Cart</a></li> -->
+                                        </ul>
+                                    </li>
                                 </div>
                             </li>
                         </ul>

@@ -917,6 +917,16 @@ h2.widget-title:after {
   color: #fff;
 }
 
+.footer-box.subscribe form input[type=date] {
+  border: none;
+  background-color: #012738;
+  width: 78%;
+  padding: 15px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  color: #fff;
+}
+
 .footer-box.subscribe form input[type=password] {
   border: none;
   background-color: #012738;
@@ -1827,6 +1837,16 @@ span.comment-date {
   margin-left: 10px;
 }
 
+.comment-template form p input[type=date] {
+  border: 1px solid #ddd;
+  width: 49%;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 15px;
+  color: #051922;
+  margin-left: 10px;
+}
+
 .comment-template form p input[type=password] {
   border: 1px solid #ddd;
   width: 49%;
@@ -2281,7 +2301,7 @@ ul.social-link-team li a {
   line-height: 1.8;
 }
 
-.contact-form form p input[type=text], .contact-form form p input[type=tel], .contact-form form p input[type=email], .contact-form form p input[type=password] {
+.contact-form form p input[type=text], .contact-form form p input[type=tel], .contact-form form p input[type=email], .contact-form form p input[type=password], .contact-form form p input[type=date] {
   width: 49%;
   padding: 15px;
   border: 1px solid #ddd;

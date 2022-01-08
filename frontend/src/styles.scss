@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Para Formularios
+
+// input:valid {
+//     background-color: #a0ffa5;
+// }
+
+.inp-invalid {
+    background-color: rgb(255, 204, 204);
+    box-shadow: 0 0 5px red;
+}
+
+.inp-valid {
+    background-color: rgb(219, 255, 214);
+    box-shadow: 0 0 5px green;
+}

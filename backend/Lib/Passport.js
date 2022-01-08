@@ -29,8 +29,8 @@ passport.use('local.login', new localStrategy({
     passReqToCallback: true
 },async (req, user, password, done) => {
     console.log('user:',user);
-    console.log('pass:',password);
-    const usuario = await AccountModel.findOne({where:{user:user}});    
+    // console.log('pass:',password);
+    const usuario = await AccountModel.findOne({where:{id_cuenta: user}});    
     console.log('Usuario:\n',usuario);
     if(usuario != undefined){        
         if(usuario.activa){
@@ -54,6 +54,7 @@ passport.serializeUser((usr, done)=>{
 
 
 passport.deserializeUser(async (usr,done)=>{
-      const usuario = await AccountModel.findOne({where:{id_cuenta:usr}});
+      const usuario = await AccountModel.findOne({where:{id_cuenta: usr}});
+      console.log(usr,'asdfa ',usuario);
       return done(null,usuario.id_cuenta);
 })

@@ -45,10 +45,11 @@ const {database} = require('./key');
 //Passport
 const passport = require('passport')
 const session = require('express-session')
-const MySQLStore = require('express-mysql-session')
+const MySQLStore = require('express-mysql-session');
+// const Account = require('./Model/Initialization/Account');
 
 //Rutas
-// const Account = require('./Routes/AccountRoutes');
+const AccountRoutes = require('./Routes/AccountRoutes');
 // const Logger = require('./Routes/LoggerRoutes');
 // const Post = require('./Routes/PostRoutes');
 // const Card = require('./Routes/CardsRoutes');
@@ -88,7 +89,7 @@ app.use(session({
     //     httpOnly:true,
     //     secure:false
     // },
-   // store: new MySQLStore(database)
+   store: new MySQLStore(database)
 }))
 
 app.use(express.json());
@@ -104,7 +105,7 @@ app.use(passport.session());
 
 
 //Agregar a app
-// app.use("/api",Account);
+app.use("/api",AccountRoutes);
 // app.use("/api",Logger);
 // app.use("/api",Post);
 // app.use("/api",Card);
@@ -116,10 +117,10 @@ app.use(passport.session());
 // //p.use(Exchange);
 // app.use("/api",Contact);
 
-// app.use(express.static(__dirname+'/View/dist/View'));
-// app.get('/*',function(req,res){
-//     res.sendFile(path.join(__dirname+'/View/dist/View/index.html'));
-// });
+app.use(express.static(__dirname+'/frontend/dist/View'));
+app.get('/*',function(req,res){
+    res.sendFile(path.join(__dirname+'/frontend/dist/View/index.html'));
+});
 
 
 server.listen(PORT, function(){

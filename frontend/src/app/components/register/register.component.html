@@ -9,26 +9,84 @@
 					<div class="hero-text">
 						<div class="hero-text-tablecell">
 							<!-- <p class="subtitle">Fresh & Organic</p> -->
-							<h1>Sing In</h1>
+							<div>
+                                <a>
+                                    <img src="../../../assets/img/logo.png" alt="">
+                                </a>
+                            </div>
+                            <h1>Sign Up</h1>
                             <!-- contact form -->
                             <!-- <div class="contact-from-section mt-150 mb-150"> -->
                                 <div class="container">
                                     <div class="row" style="margin: auto; justify-content: center;">
                                         <div class="col-lg-8 mb-5 mb-lg-0">
                                             <!-- <div id="form_status"></div> -->
-                                            <div class="contact-form" style="">
-                                                <form type="POST" id="fruitkha-contact" onSubmit="return valid_datas( this );">
+                                            <div class="contact-form">
+                                                <form [formGroup]="signUpForm" (ngSubmit)="signUp(signUpForm)" id="fruitkha-contact" >
                                                     <p>
-                                                        <input style="margin-right: 10px;" type="text" placeholder="Name" name="name" id="name">
-                                                        <input type="email" placeholder="Email" name="email" id="email">
+                                                        <input 
+                                                        [class.inp-invalid]="signUpForm.get('nombres')?.errors && signUpForm.get('nombres')?.touched" 
+                                                        [class.inp-valid]="!signUpForm.get('nombres')?.errors && signUpForm.get('nombres')?.touched"
+                                                        class="" formControlName="nombres" style="margin-right: 10px; " type="text" placeholder="First Names" id="first-names" [required]="true">
+                                                        
+                                                        <input 
+                                                        [class.inp-invalid]="signUpForm.get('apellidos')?.errors && signUpForm.get('apellidos')?.touched" 
+                                                        [class.inp-valid]="!signUpForm.get('apellidos')?.errors && signUpForm.get('apellidos')?.touched"
+                                                        class="" formControlName="apellidos" type="text" placeholder="Last Name" id="last-name" [required]="true">
                                                     </p>
                                                     <p>
-                                                        <input style="margin-right: 10px;" type="tel" placeholder="Phone" name="phone" id="phone">
-                                                        <input type="text" placeholder="Subject" name="subject" id="subject">
+                                                        <label *ngIf="signUpForm.get('nombres')?.errors && signUpForm.get('nombres')?.touched" style="color: red; padding-right: 10px;">Debe de llenar el campo Fist Name</label>
+                                                        <label *ngIf="signUpForm.get('apellidos')?.errors && signUpForm.get('apellidos')?.touched" style="color: red; padding-right: 10px;">Debe de llenar el campo Last Name</label>
                                                     </p>
-                                                    <p><textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea></p>
-                                                    <input type="hidden" name="token" value="FsWga4&@f6aw" />
-                                                    <p><input type="submit" value="Submit"></p>
+                                                    <p>
+                                                        <input 
+                                                        [class.inp-invalid]="signUpForm.get('user')?.errors && signUpForm.get('user')?.touched" 
+                                                        [class.inp-valid]="!signUpForm.get('user')?.errors && signUpForm.get('user')?.touched" 
+                                                        formControlName="user" style="margin-right: 10px;" type="text" placeholder="User Name" id="user" [required]="true">
+                                                        <input 
+                                                        [class.inp-invalid]="signUpForm.get('password')?.errors && signUpForm.get('password')?.touched" 
+                                                        [class.inp-valid]="!signUpForm.get('password')?.errors && signUpForm.get('password')?.touched" 
+                                                        formControlName="password" type="password" placeholder="Password" id="password" [required]="true">
+                                                    </p>
+                                                    <p>
+                                                        <label *ngIf="signUpForm.get('user')?.errors && signUpForm.get('user')?.touched" style="color: red; padding-right: 10px;">Debe de llenar el campo user</label>
+                                                        <label *ngIf="signUpForm.get('password')?.errors && signUpForm.get('password')?.touched" style="color: red; padding-right: 10px;">Debe de llenar el campo Password</label>
+                                                    </p>
+                                                    <p>
+                                                        <input 
+                                                        [class.inp-invalid]="signUpForm.get('id_cuenta')?.errors && signUpForm.get('id_cuenta')?.touched" 
+                                                        [class.inp-valid]="!signUpForm.get('id_cuenta')?.errors && signUpForm.get('id_cuenta')?.touched" 
+                                                        formControlName="id_cuenta" style="margin-right: 10px;" type="text" placeholder="DPI or ID" id="dpi" [required]="true">
+                                                        <input 
+                                                        [class.inp-invalid]="signUpForm.get('fecha_nacimiento')?.errors && signUpForm.get('fecha_nacimiento')?.touched" 
+                                                        [class.inp-valid]="!signUpForm.get('fecha_nacimiento')?.errors && signUpForm.get('fecha_nacimiento')?.touched" 
+                                                        formControlName="fecha_nacimiento" type="date" placeholder="Date of Birth" id="date" [required]="true">
+                                                    </p>
+                                                    <p>
+                                                        <label *ngIf="signUpForm.get('id_cuenta')?.errors && signUpForm.get('id_cuenta')?.touched" style="color: red; padding-right: 10px;">Debe de llenar el campo DPI</label>
+                                                        <label *ngIf="signUpForm.get('fecha_nacimiento')?.errors && signUpForm.get('fecha_nacimiento')?.touched" style="color: red; padding-right: 10px;">Debe de llenar el Date of Birth</label>
+                                                    </p>
+                                                    <p>
+                                                        <input 
+                                                        [class.inp-invalid]="signUpForm.get('telefono')?.errors && signUpForm.get('telefono')?.touched" 
+                                                        [class.inp-valid]="!signUpForm.get('telefono')?.errors && signUpForm.get('telefono')?.touched" 
+                                                        formControlName="telefono" style="margin-right: 10px;" type="text" placeholder="Phone" id="phone" [required]="true">
+                                                        <input 
+                                                        [class.inp-invalid]="signUpForm.get('correo')?.errors && signUpForm.get('correo')?.touched" 
+                                                        [class.inp-valid]="!signUpForm.get('correo')?.errors && signUpForm.get('correo')?.touched" 
+                                                        formControlName="correo" type="email" placeholder="Email" id="email" [required]="true">
+                                                    </p>
+                                                    <p>
+                                                        <label *ngIf="signUpForm.get('telefono')?.errors && signUpForm.get('telefono')?.touched" style="color: red; padding-right: 10px;">Debe de llenar el campo Phone</label>
+                                                        <label *ngIf="signUpForm.get('email')?.errors && signUpForm.get('correo')?.touched" style="color: red; padding-right: 10px;">Debe de llenar el campo Email</label>
+                                                    </p>
+                                                    <p>
+                                                        <!-- <input style="margin-right: 10px;" type="text" placeholder="Name" name="name" id="name" [required]="true"> -->
+                                                        <!-- <input type="email" placeholder="Email" name="email" id="email" [required]="true"> -->
+                                                    </p>
+                                                    <!-- <p><textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea></p> -->
+                                                    <!-- <input type="hidden" name="token" value="FsWga4&@f6aw" /> -->
+                                                    <p><input type="submit" value="Sign up" ></p>
                                                 </form>
                                             </div>
                                         </div>
