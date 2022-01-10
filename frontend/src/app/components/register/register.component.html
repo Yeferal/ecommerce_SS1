@@ -27,12 +27,12 @@
                                                         <input 
                                                         [class.inp-invalid]="signUpForm.get('nombres')?.errors && signUpForm.get('nombres')?.touched" 
                                                         [class.inp-valid]="!signUpForm.get('nombres')?.errors && signUpForm.get('nombres')?.touched"
-                                                        class="" formControlName="nombres" style="margin-right: 10px; " type="text" placeholder="First Names" id="first-names" [required]="true">
+                                                        formControlName="nombres" style="margin-right: 10px; " type="text" placeholder="First Names" id="first-names" [required]="true">
                                                         
                                                         <input 
                                                         [class.inp-invalid]="signUpForm.get('apellidos')?.errors && signUpForm.get('apellidos')?.touched" 
                                                         [class.inp-valid]="!signUpForm.get('apellidos')?.errors && signUpForm.get('apellidos')?.touched"
-                                                        class="" formControlName="apellidos" type="text" placeholder="Last Name" id="last-name" [required]="true">
+                                                        formControlName="apellidos" type="text" placeholder="Last Name" id="last-name" [required]="true">
                                                     </p>
                                                     <p>
                                                         <label *ngIf="signUpForm.get('nombres')?.errors && signUpForm.get('nombres')?.touched" style="color: red; padding-right: 10px;">Debe de llenar el campo Fist Name</label>

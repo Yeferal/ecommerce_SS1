@@ -50,6 +50,7 @@ const MySQLStore = require('express-mysql-session');
 
 //Rutas
 const AccountRoutes = require('./Routes/AccountRoutes');
+const ProductRoutes = require('./Routes/ProductRoutes');
 // const Logger = require('./Routes/LoggerRoutes');
 // const Post = require('./Routes/PostRoutes');
 // const Card = require('./Routes/CardsRoutes');
@@ -106,6 +107,7 @@ app.use(passport.session());
 
 //Agregar a app
 app.use("/api",AccountRoutes);
+app.use("/api",ProductRoutes);
 // app.use("/api",Logger);
 // app.use("/api",Post);
 // app.use("/api",Card);
@@ -117,10 +119,12 @@ app.use("/api",AccountRoutes);
 // //p.use(Exchange);
 // app.use("/api",Contact);
 
-app.use(express.static(__dirname+'/frontend/dist/View'));
-app.get('/*',function(req,res){
-    res.sendFile(path.join(__dirname+'/frontend/dist/View/index.html'));
-});
+// app.use(express.static(__dirname+'/frontend/dist/View'));
+// app.get('/*',function(req,res){
+//     res.sendFile(path.join(__dirname+'/frontend/dist/View/index.html'));
+// });
+
+app.use('/images', express.static(path.resolve('images')));
 
 
 server.listen(PORT, function(){
