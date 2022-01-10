@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent, canActivate: [LogoutGuard]},
   {path: 'shop', component: ShopComponent, canActivate: [LogoutGuard]},
   {path: 'checkout', component: CheckoutComponent, canActivate: [LogoutGuard]},
-  {path: 'single-product', component: SingleProductComponent, canActivate: [LogoutGuard]},
+  {path: 'single-product/:id_product', component: SingleProductComponent, canActivate: [LogoutGuard]},
   {path: 'cart', component: CartComponent, canActivate: [LogoutGuard]},
   // {path: 'home', component: HomeComponent},
 ];

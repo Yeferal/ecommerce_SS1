@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/product/product';
 import { LoadScriptsService } from 'src/app/services/load-scripts.service';
+import { ProductService } from 'src/app/services/shop/product.service';
+import { GLOBAL } from '../../services/global';
 
 @Component({
   selector: 'app-home',
@@ -74,13 +77,30 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  constructor(private _loadScripts: LoadScriptsService) { 
+  readonly URL_API = GLOBAL.URL2;
+  listProducts: Product [] = [];
+
+  constructor(private _loadScripts: LoadScriptsService, private productService: ProductService) { 
     // _loadScripts.load(this.filesScripsts);
     // _loadScripts.loadLinks(this.filesLinks);
   }
 
   ngOnInit(): void {
+    this.getProducts();
+  }
 
+  getProducts(){
+    this.productService.getProducts().subscribe(
+      res => {
+        
+        this.listProducts = res;
+        console.log(this.listProducts);
+      },
+      error => {
+        console.log(error);
+        
+      }
+    )
   }
 
 }
