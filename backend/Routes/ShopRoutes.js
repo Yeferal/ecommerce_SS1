@@ -5,6 +5,7 @@ const Router = express.Router();
 const {isLoggedIn, isNotLoggedIn} = require('../Lib/auth');
 
 const ShopController = require('../Controller/ShopController');
+const OrderController = require('../Controller/OrderController');
 
 Router.use(isLoggedIn, ShopController.createCart);
 
@@ -22,6 +23,6 @@ Router.put('/cart',isLoggedIn, ShopController.updateCart);
 Router.get('/totalCart',isLoggedIn, ShopController.totalCart);
 
 //Finalizar Orden
-// Router.post('/Buy',isLoggedIn, ShopController.buy);
+Router.post('/buy',isLoggedIn, OrderController.buy);
 
 module.exports = Router;

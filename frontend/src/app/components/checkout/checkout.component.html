@@ -39,13 +39,32 @@
                           <div class="card-body">
                             <div class="billing-address-form">
                                 <form [formGroup]="formOrder" (ngSubmit)="genOrder()">
-                                    <p><input formControlName="nombres" type="text" placeholder="Name" [value]="userLogged.nombres"></p>
-                                    <p><input formControlName="apellidos" type="text" placeholder="Last Name" [value]="userLogged.apellidos"></p>
-                                    <p><input formControlName="correo" type="email" placeholder="Email" [value]="userLogged.correo"></p>
-                                    <p><input formControlName="direccion" type="text" placeholder="Address" required></p>
-                                    <p><input formControlName="telefono" type="tel" placeholder="Phone" [value]="userLogged.telefono"></p>
+                                    <p><input 
+                                      [class.inp-invalid]="formOrder.get('nombres')?.errors && formOrder.get('nombres')?.touched" 
+                                      [class.inp-valid]="!formOrder.get('nombres')?.errors && formOrder.get('nombres')?.touched" 
+                                      formControlName="nombres" type="text" placeholder="Name" [value]="userLogged.nombres"></p>
+                                    <p><input 
+                                      [class.inp-invalid]="formOrder.get('apellidos')?.errors && formOrder.get('apellidos')?.touched" 
+                                      [class.inp-valid]="!formOrder.get('apellidos')?.errors && formOrder.get('apellidos')?.touched" 
+                                      formControlName="apellidos" type="text" placeholder="Last Name" [value]="userLogged.apellidos"></p>
+                                    <p><input 
+                                      [class.inp-invalid]="formOrder.get('correo')?.errors && formOrder.get('correo')?.touched" 
+                                      [class.inp-valid]="!formOrder.get('correo')?.errors && formOrder.get('correo')?.touched" 
+                                      formControlName="correo" type="email" placeholder="Email" [value]="userLogged.correo"></p>
+                                    <p><input 
+                                      [class.inp-invalid]="formOrder.get('direccion')?.errors && formOrder.get('direccion')?.touched" 
+                                      [class.inp-valid]="!formOrder.get('direccion')?.errors && formOrder.get('direccion')?.touched" 
+                                      formControlName="direccion" type="text" placeholder="Address" required></p>
+                                    <p><input 
+                                      [class.inp-invalid]="formOrder.get('telefono')?.errors && formOrder.get('telefono')?.touched" 
+                                      [class.inp-valid]="!formOrder.get('telefono')?.errors && formOrder.get('telefono')?.touched" 
+                                      formControlName="telefono" type="tel" placeholder="Phone" [value]="userLogged.telefono"></p>
                                     <!-- <p><textarea name="bill" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea></p> -->
-                                    <p><input formControlName="no_tarjeta" type="text" placeholder="No. Card" required></p>
+                                    <p><input 
+                                      [class.inp-invalid]="formOrder.get('no_tarjeta')?.errors && formOrder.get('no_tarjeta')?.touched" 
+                                      [class.inp-valid]="!formOrder.get('no_tarjeta')?.errors && formOrder.get('no_tarjeta')?.touched" 
+                                      formControlName="no_tarjeta" type="text" placeholder="No. Card" required></p>
+                                      <p><Label style="color: red;">{{message}}</Label></p>
                                     <input type="submit" class="boxed-btn" value="Place Order">
                                   </form>
                             </div>

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product/product';
 import { Cart } from 'src/app/models/shop/cart';
 import { User } from 'src/app/models/user/user';
+import { BuyService } from 'src/app/services/shop/buy.service';
 import { CartService } from 'src/app/services/shop/cart.service';
 import { ProductService } from 'src/app/services/shop/product.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -37,12 +38,14 @@ export class CheckoutComponent implements OnInit {
   shipping: any = 35;
   total: any = 0;
   userLogged: User = new User();
+  message: string = '';
   readonly URL_API = GLOBAL.URL2;
 
   constructor(private productService: ProductService,
     private cartService: CartService,
     private userService: UserService,
-    private router: Router) { }
+    private buyService: BuyService, 
+    private router: Router,) { }
 
   ngOnInit(): void {
     this.getAll();
@@ -116,7 +119,23 @@ export class CheckoutComponent implements OnInit {
   }
 
   genOrder(){
-    console.log(this.formOrder.value);
+    // console.log(this.formOrder.value);
+    if (this.formOrder.invalid) {
+      this.message = 'Debe de llenar todos los campor correctamente';
+      return ;
+    }
+    this.message = '';
+    this.buyService.genOrder(this.formOrder.value).subscribe(
+      res => {
+        console.log(res);
+        
+        window.location.reload()
+      },
+      error => {
+        console.log(error);
+        
+      }
+    );
     
   }
 
