@@ -94,6 +94,14 @@ async function deleteProduct(req, res){
 
 // async function getProduct(req, res){}
 
+async function oneProduct(id_producto){
+    return await Product.findOne({
+        where:{
+            activado: true,
+            id_producto: id_producto
+        }        
+    }) 
+}
 
 module.exports = {
     createProduct,
@@ -101,5 +109,6 @@ module.exports = {
     getProducts,
     updateProduct,
     updateImgProduct,
-    deleteProduct
+    deleteProduct,
+    oneProduct
 }
