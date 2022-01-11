@@ -38,18 +38,21 @@
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                           <div class="card-body">
                             <div class="billing-address-form">
-                                <form action="index.html">
-                                    <p><input type="text" placeholder="Name"></p>
-                                    <p><input type="email" placeholder="Email"></p>
-                                    <p><input type="text" placeholder="Address"></p>
-                                    <p><input type="tel" placeholder="Phone"></p>
-                                    <p><textarea name="bill" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea></p>
-                                </form>
+                                <form [formGroup]="formOrder" (ngSubmit)="genOrder()">
+                                    <p><input formControlName="nombres" type="text" placeholder="Name" [value]="userLogged.nombres"></p>
+                                    <p><input formControlName="apellidos" type="text" placeholder="Last Name" [value]="userLogged.apellidos"></p>
+                                    <p><input formControlName="correo" type="email" placeholder="Email" [value]="userLogged.correo"></p>
+                                    <p><input formControlName="direccion" type="text" placeholder="Address" required></p>
+                                    <p><input formControlName="telefono" type="tel" placeholder="Phone" [value]="userLogged.telefono"></p>
+                                    <!-- <p><textarea name="bill" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea></p> -->
+                                    <p><input formControlName="no_tarjeta" type="text" placeholder="No. Card" required></p>
+                                    <input type="submit" class="boxed-btn" value="Place Order">
+                                  </form>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="card single-accordion">
+                      <!-- <div class="card single-accordion">
                         <div class="card-header" id="headingTwo">
                           <h5 class="mb-0">
                             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -64,8 +67,8 @@
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="card single-accordion">
+                      </div> -->
+                      <!-- <div class="card single-accordion">
                         <div class="card-header" id="headingThree">
                           <h5 class="mb-0">
                             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -80,7 +83,7 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
 
                 </div>
@@ -100,35 +103,28 @@
                                 <td>Product</td>
                                 <td>Total</td>
                             </tr>
-                            <tr>
-                                <td>Strawberry</td>
-                                <td>$85.00</td>
-                            </tr>
-                            <tr>
-                                <td>Berry</td>
-                                <td>$70.00</td>
-                            </tr>
-                            <tr>
-                                <td>Lemon</td>
-                                <td>$35.00</td>
+                            <tr *ngFor="let product of listProducts; let i = index">
+                                <td>{{product.nombre}}</td>
+                                <td>Q {{listCart[i].cantidad*product.precio_unitario}}</td>
                             </tr>
                         </tbody>
+                        <hr>
                         <tbody class="checkout-details">
                             <tr>
                                 <td>Subtotal</td>
-                                <td>$190</td>
+                                <td>Q {{subTotal}}</td>
                             </tr>
                             <tr>
                                 <td>Shipping</td>
-                                <td>$50</td>
+                                <td>Q 35</td>
                             </tr>
                             <tr>
                                 <td>Total</td>
-                                <td>$240</td>
+                                <td>Q {{subTotal + 35}}</td>
                             </tr>
                         </tbody>
                     </table>
-                    <a href="#" class="boxed-btn">Place Order</a>
+                    <!-- <a (click)="genOrder()" class="boxed-btn">Place Order</a> -->
                 </div>
             </div>
         </div>

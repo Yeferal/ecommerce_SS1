@@ -89,7 +89,11 @@ async function deleteProduct(req, res){
         activado: false
     },{
         where: {id_producto: req.params.id_producto}
-    })
+    }).then(post => {
+        res.status(200).json(post);
+    }).catch(err =>{
+        res.status(300).json({message: 'No se eliminio el producto'});
+    });
 }
 
 // async function getProduct(req, res){}

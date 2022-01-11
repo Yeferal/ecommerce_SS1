@@ -1,5 +1,6 @@
 //Modelo de la DB
 const Account = require('../Initialization/Account');
+const User = require('../Initialization/User');
 const { Op } = require("sequelize");
 
 
@@ -38,10 +39,19 @@ async function deleteAccount(req, res){
     });
 }
 
+async function readUserInformation(req){
+    return await User.findOne({
+        where:{
+            id_cuenta: req.user
+        }
+    });
+}
+
 module.exports = {
     deleteAccount, 
     updateAccount, 
     createAccountLogger,
+    readUserInformation,
     // readUserStandardLoggedInformation, 
     // readUserBussinesLoggedInformation, 
     readUserLoggedInformation, 

@@ -29,7 +29,7 @@ ShopController.addProduct = async (req, res) => {
 
 ShopController.deletePost = (req,res)=>{
     req.session.cart.forEach((cart, index, object)=>{
-        if(cart.id == req.params.id){
+        if(cart.id_producto == req.params.id){
             object.splice(index,1);
         }
     })
@@ -46,12 +46,15 @@ ShopController.deleteAll = (req,res)=>{
 }
 
 ShopController.updateCart = (req, res) => {
+    // console.log('Ssssssssssss',req.body);
     req.session.cart.forEach(cart => {
-        if (cart.id == req.body.id) {
+        console.log(cart);
+        if (cart.id_producto == req.body.id) {
+            // console.log('Ddio');
             cart.cantidad = req.body.cantidad;
         }
     });
-    res.send("A")
+    res.status(200).json({message: "UpdateProduct"});
 }
 
 ShopController.totalCart  = async (req,res) =>{

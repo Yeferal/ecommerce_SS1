@@ -34,10 +34,11 @@
                     <p class="single-product-pricing"><span>Unit</span> Q {{product.precio_unitario}}</p>
                     <p>{{product.descripcion}}</p>
                     <div class="single-product-form">
-                        <form action="index.html">
-                            <input type="number" placeholder="0">
+                        <form [formGroup]="formSingle">
+                            <input formControlName="cantidad" type="number" placeholder="0" min="0">
+                        <br>
+                            <a (click)="addCartProduct()" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                         </form>
-                        <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                         <!-- <p><strong>Categories: </strong>Fruits, Organic</p> -->
                     </div>
                     <h4>Share:</h4>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product/product';
+import { CartService } from 'src/app/services/shop/cart.service';
 import { ProductService } from 'src/app/services/shop/product.service';
 import { GLOBAL } from '../../services/global';
 
@@ -11,10 +13,17 @@ import { GLOBAL } from '../../services/global';
 })
 export class SingleProductComponent implements OnInit {
 
+  formSingle: FormGroup = new FormGroup({
+    cantidad: new FormControl(0,Validators.required)
+  });
+
   product: Product = new Product();
   readonly URL_API = GLOBAL.URL2;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute,) { }
+  constructor(private productService: ProductService, 
+    private cartService: CartService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     const id_product = this.route.snapshot.paramMap.get('id_product');
@@ -46,6 +55,25 @@ export class SingleProductComponent implements OnInit {
         
       }
     )
+  }
+
+  addCartProduct(){
+    console.log(this.formSingle.value);
+    const id_prod = this.route.snapshot.paramMap.get('id_producto');
+    const cart = {
+      id_producto: this.product.id_producto,
+      cantidad: this.formSingle.get('cantidad')?.value,
+      precio_unitario: this.product.precio_unitario
+    }
+    this.cartService.postAddProductCart(cart).subscribe(
+      res => {
+        console.log(res);
+        this.router.navigate(['/cart']);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }

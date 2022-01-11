@@ -30,6 +30,6 @@ Router.post('/upload-img',upload.single('img'),Product.createProduct);
 Router.put('/product-img/:id_producto',upload.single('img'), Product.updateImgProduct);
 Router.put('/product/:id_producto', Product.updateProduct);
 
-Router.delete('/product');
+Router.delete('/product/:id_producto',Product.deleteProduct);
 
 module.exports = Router;

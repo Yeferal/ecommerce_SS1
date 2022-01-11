@@ -2,6 +2,7 @@
 const express = require('express');
 const Router = express.Router();
 const logger = require('../Controller/LoggerController');
+const AccountController = require('../Controller/AccountController');
 
 const {isLoggedIn, isNotLoggedIn} = require('../Lib/auth');
 
@@ -11,6 +12,8 @@ const {isLoggedIn, isNotLoggedIn} = require('../Lib/auth');
 Router.get('/logout',logger.logout);
 
 Router.get('/IsLogged',logger.isLogged);
+
+Router.get('/logged', isLoggedIn,AccountController.readUser);
 
 // // POST
 Router.post('/login',isNotLoggedIn,logger.login);

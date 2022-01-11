@@ -91,7 +91,7 @@
                             </div>
                             <h3>{{product.nombre}}</h3>
                             <p class="product-price"><span>Unit</span> Q {{product.precio_unitario}} </p>
-                            <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                            <a (click)="addProductCart(product)" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                         </div>
                     </div>
                 </div>
