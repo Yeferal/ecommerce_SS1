@@ -23,16 +23,6 @@ const server = createServer(app);
 const io = new Server(server, {  })
 // require('./Controller/Socket')(io);
 
-
-/*
-const app = express();
-const { createServer } = require("http");
-const server = createServer(app);
-const io = require("socket.io")(server);
-require('./Controller/Socket')(io);
-
-*/
-
 //Db
 const sequelize = require("./Model/db");
 const Models = require('./Model/CreateModels');
@@ -46,7 +36,6 @@ const {database} = require('./key');
 const passport = require('passport')
 const session = require('express-session')
 const MySQLStore = require('express-mysql-session');
-// const Account = require('./Model/Initialization/Account');
 
 //Rutas
 const AccountRoutes = require('./Routes/AccountRoutes');
@@ -54,28 +43,23 @@ const ProductRoutes = require('./Routes/ProductRoutes');
 const OrderRoutes = require('./Routes/OrderRoutes');
 const ListOrderRoutes = require('./Routes/ListOrderRoutes');
 const Shop = require('./Routes/ShopRoutes');
-// const Search = require('./Routes/SearchRoutes');
-// const AuthRoutes = require('./Routes/AuthRoutes');
-// const Member = require('./Routes/MemberRoutes');
-// const Notify = require('./Routes/NotifyRoutes');
-// const Exchange = require('./Routes/ExchangeRoutes');
-// const Contact = require('./Routes/ContactRoutes');
+
 
 //inicializaciones
 require('./Lib/Passport');
 
 
 //middleware
-const corsOptions = {origin: "http://localhost:4401"}
-app.use(cors({
-    origin: "http://localhost:4401",
-    credentials: true
-}));
-// const corsOptions = {origin: "https://accomerce-app.herokuapp.com"}
+// const corsOptions = {origin: "http://localhost:4401"}
 // app.use(cors({
-//     origin: "https://accomerce-app.herokuapp.com",
+//     origin: "http://localhost:4401",
 //     credentials: true
 // }));
+const corsOptions = {origin: "https://accomerce-app.herokuapp.com"}
+app.use(cors({
+    origin: "https://accomerce-app.herokuapp.com",
+    credentials: true
+}));
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(bodyParser());
