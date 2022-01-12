@@ -6,10 +6,8 @@ var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 const path = require('path');
 
-
 //Definicion de puerto
 const PORT = process.env.PORT || 65000;
-
 
 //Cors
 const cors = require('cors');
@@ -24,17 +22,8 @@ const io = new Server(server, {  })
 // require('./Controller/Socket')(io);
 
 
-/*
-const app = express();
-const { createServer } = require("http");
-const server = createServer(app);
-const io = require("socket.io")(server);
-require('./Controller/Socket')(io);
-
-*/
-
 //Db
-const sequelize = require("./Model/Db");
+const sequelize = require("./Model/db");
 const Models = require('./Model/CreateModels');
 
 const {database} = require('./key');
@@ -54,12 +43,7 @@ const ProductRoutes = require('./Routes/ProductRoutes');
 const OrderRoutes = require('./Routes/OrderRoutes');
 const ListOrderRoutes = require('./Routes/ListOrderRoutes');
 const Shop = require('./Routes/ShopRoutes');
-// const Search = require('./Routes/SearchRoutes');
-// const AuthRoutes = require('./Routes/AuthRoutes');
-// const Member = require('./Routes/MemberRoutes');
-// const Notify = require('./Routes/NotifyRoutes');
-// const Exchange = require('./Routes/ExchangeRoutes');
-// const Contact = require('./Routes/ContactRoutes');
+const ConnectRutes = require('./Routes/ConnectRutes');
 
 //inicializaciones
 require('./Lib/Passport');
@@ -71,9 +55,9 @@ app.use(cors({
     origin: "http://localhost:4401",
     credentials: true
 }));
-// const corsOptions = {origin: "https://comercio-electronico.herokuapp.com/api"}
+// const corsOptions = {origin: "https://ss1-eccomerce.herokuapp.com/api"}
 // app.use(cors({
-//     origin: "https://comercio-electronico.herokuapp.com/api",
+//     origin: "https://ss1-eccomerce.herokuapp.com/api",
 //     credentials: true
 // }));
 app.use(cors(corsOptions));
@@ -95,14 +79,8 @@ app.use(session({
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-//app.use(express.static('View'));
-
-
 
 //Agregar a app
 app.use("/api", AccountRoutes);
@@ -110,27 +88,25 @@ app.use("/api", ProductRoutes);
 app.use("/api", OrderRoutes);
 app.use("/api", ListOrderRoutes);
 app.use("/api", Shop);
-// app.use("/api",Search);
-// app.use("/api",AuthRoutes);
-// app.use("/api",Member);
-// app.use("/api",Notify);
-// //p.use(Exchange);
-// app.use("/api",Contact);
+app.use("/api", ConnectRutes);
 
-// app.use(express.static(__dirname+'/frontend/dist/View'));
-// app.get('/*',function(req,res){
-//     res.sendFile(path.join(__dirname+'/frontend/dist/View/index.html'));
+// app.use(express.static(__dirname+'/frontend/dist/frontend'));
+// app.get('/',function(req,res){
+//     res.sendFile(path.join(__dirname+'/frontend/dist/frontend/index.html'));
 // });
+
+app.use(express.static(__dirname+'/frontend/dist/frontend'));
+app.get('/',function(req, res){
+    res.sendFile(path.join(__dirname+'/frontend/dist/frontend/index.html'));
+    console.log(__dirname,  "  asdfdfasd")
+});
 
 app.use('/images', express.static(path.resolve('images')));
 
 
 server.listen(PORT, function(){
     console.log(`la app ha sido arrancada en ${PORT}`.yellow);
-
-    //Conexion a la base de datos
-//    sequelize.query('SET FOREIGN_KEY_CHECKS = 0').then(
-        sequelize.sync({force: false}).then(() => {
+    sequelize.sync({force: true}).then(() => {
         console.log("Conexion a DB establecida".green);
     }).catch(error => {
         console.log("Se ha producido un error al momento de intentar conectar con la db".red,error);

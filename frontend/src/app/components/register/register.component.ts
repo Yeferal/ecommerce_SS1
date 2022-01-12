@@ -36,6 +36,7 @@ export class RegisterComponent implements OnInit {
     this.sessionService.postSignUp(signUpForm.value).subscribe(
       res => {
         console.log(res);
+        this.router.navigate(['/home']);
       },
       error => {
         console.log(error);

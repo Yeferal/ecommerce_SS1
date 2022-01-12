@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../Db');
+const sequelize = require('../db');
 
 const Bill = sequelize.define('Bill', {
     no_factura : {
