@@ -61,7 +61,7 @@ async function genFactura(req, res){
         cuenta_efectiva: req.body.id_cuenta,
         fecha: Date.now(),
         total: req.body.total,
-        // id_cuenta: req.body.id_cuenta,
+        id_cuenta: req.body.id_cuenta,
     });
     
     await listOrders.forEach(listOr => {
@@ -71,7 +71,7 @@ async function genFactura(req, res){
             precio_unitario: listOr.precio_unitario,
             cantidad: listOr.cantidad,
             total: listOr.cantidad * listOr.precio_unitario,
-            // id_factura: bill.no_factura
+            id_factura: bill.no_factura
         });
     });
 
