@@ -24,9 +24,13 @@ OrderController.buy = async (req, res) => {
     return res.json({message: "Su pedido se esta procesando"});
 }
 
+OrderController.genFactura = async (req, res) => {
+    return await OrderModel.genFactura(req, res);
+}
 
-
-
+OrderController.deleteOrder = async (req, res) => {
+    return await OrderModel.deleteOrder(req, res);
+}
 
 function total(req) {
     totalV = 0
@@ -36,5 +40,16 @@ function total(req) {
     });
     return totalV;
 }
+
+OrderController.getAllOrders = async (req, res) => {
+    listOrders = await OrderModel.getAllOrders();
+    return res.status(200).json(listOrders);
+}
+
+OrderController.getAllListOneOrders = async (req, res) => {
+    listOneOrder = await OrderModel.getAllListOneOrder(req, res);
+    return res.status(200).json(listOneOrder);
+}
+
 
 module.exports = OrderController;

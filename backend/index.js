@@ -51,9 +51,8 @@ const MySQLStore = require('express-mysql-session');
 //Rutas
 const AccountRoutes = require('./Routes/AccountRoutes');
 const ProductRoutes = require('./Routes/ProductRoutes');
-// const Logger = require('./Routes/LoggerRoutes');
-// const Post = require('./Routes/PostRoutes');
-// const Card = require('./Routes/CardsRoutes');
+const OrderRoutes = require('./Routes/OrderRoutes');
+const ListOrderRoutes = require('./Routes/ListOrderRoutes');
 const Shop = require('./Routes/ShopRoutes');
 // const Search = require('./Routes/SearchRoutes');
 // const AuthRoutes = require('./Routes/AuthRoutes');
@@ -106,12 +105,11 @@ app.use(passport.session());
 
 
 //Agregar a app
-app.use("/api",AccountRoutes);
-app.use("/api",ProductRoutes);
-// app.use("/api",Logger);
-// app.use("/api",Post);
-// app.use("/api",Card);
-app.use("/api",Shop);
+app.use("/api", AccountRoutes);
+app.use("/api", ProductRoutes);
+app.use("/api", OrderRoutes);
+app.use("/api", ListOrderRoutes);
+app.use("/api", Shop);
 // app.use("/api",Search);
 // app.use("/api",AuthRoutes);
 // app.use("/api",Member);
