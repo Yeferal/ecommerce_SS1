@@ -66,9 +66,9 @@ require('./Lib/Passport');
 
 
 //middleware
-const corsOptions = {origin: "https://accomerce-app.herokuapp.com/api"}
+const corsOptions = {origin: "https://accomerce-app.herokuapp.com"}
 app.use(cors({
-    origin: "https://accomerce-app.herokuapp.com/api",
+    origin: "https://accomerce-app.herokuapp.com",
     credentials: true
 }));
 // const corsOptions = {origin: "https://comercio-electronico.herokuapp.com/api"}
