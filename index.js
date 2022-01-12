@@ -102,7 +102,7 @@ app.get('/',function(req, res){
     res.sendFile(path.join(__dirname+'/frontend/dist/frontend/index.html'));
 });
 
-app.use('/images', express.static(path.resolve('images')));
+app.use('./images', express.static(path.resolve('images')));
 
 
 server.listen(PORT, function(){
