@@ -13,7 +13,7 @@ async function createProduct(req, res){
             descripcion: req.body.descripcion,
             precio_unitario: req.body.precio_unitario,
             estado: req.body.estado,
-            path_img: req.file.path,
+            // path_img: req.file.path,
             activado: true
         }).then(post => {
             res.status(200).json(post);
