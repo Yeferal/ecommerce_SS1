@@ -107,7 +107,7 @@ app.use('/images', express.static(__dirname+'/images'));
 
 server.listen(PORT, function(){
     console.log(`la app ha sido arrancada en ${PORT}`.yellow);
-    sequelize.sync({force: false}).then(() => {
+    sequelize.sync({force: true}).then(() => {
         console.log("Conexion a DB establecida".green);
     }).catch(error => {
         console.log("Se ha producido un error al momento de intentar conectar con la db".red,error);
