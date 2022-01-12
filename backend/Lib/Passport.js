@@ -13,13 +13,14 @@ passport.use('local.signup',new localStrategy({
 },async (req, user, password, done) => {
     pass = await crypt.encryptPassword(password);
     const usuario = await AccountModel.findOne({where:{user:user}});
+    console.log(usuario);
     if(usuario == undefined){
         const usr = await Account.createAccountLogger(req, pass); 
         await AccountController.createUser(req);
         return done(null,usr.id_cuenta);
     }else{
         return done(null, false);
-    }   
+    }
 }))
 
 

@@ -31,7 +31,8 @@ export class RegisterComponent implements OnInit {
     if(signUpForm.invalid){
       return ;
     }
-
+    console.log(signUpForm.value);
+    
     this.sessionService.postSignUp(signUpForm.value).subscribe(
       res => {
         console.log(res);

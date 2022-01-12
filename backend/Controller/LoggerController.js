@@ -7,7 +7,7 @@ const LoggerController = {};
 
 
 LoggerController.signup = (req,res,next) => {
-    console.log(req.body);
+    console.log('da ',req.body);
     passport.authenticate('local.signup', function(err, user, info) {
       if (err) { return res.status(501).json(err); }
       console.log(req.user);
