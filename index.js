@@ -50,16 +50,16 @@ require('./Lib/Passport');
 
 
 //middleware
-const corsOptions = {origin: "http://localhost:4401"}
-app.use(cors({
-    origin: "http://localhost:4401",
-    credentials: true
-}));
-// const corsOptions = {origin: "https://ss1-eccomerce.herokuapp.com/"}
+// const corsOptions = {origin: "http://localhost:4401"}
 // app.use(cors({
-//     origin: "https://ss1-eccomerce.herokuapp.com/",
+//     origin: "http://localhost:4401",
 //     credentials: true
 // }));
+const corsOptions = {origin: "https://ss1-eccomerce.herokuapp.com/"}
+app.use(cors({
+    origin: "https://ss1-eccomerce.herokuapp.com/",
+    credentials: true
+}));
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(bodyParser());
@@ -102,7 +102,7 @@ app.use("/api", Shop);
 // app.use("/api",Contact);
 
 app.use(express.static(__dirname+'/frontend/dist/frontend'));
-app.get('/',function(req, res){
+app.get('/*',function(req, res){
     res.sendFile(path.join(__dirname+'/frontend/dist/frontend/index.html'));
     console.log(__dirname,  " sss")
 });
