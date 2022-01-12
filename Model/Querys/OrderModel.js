@@ -10,7 +10,7 @@ const Bill = require('../Initialization/Bill');
 
 async function createOrder(req, res, total){
     return await Order.create({
-        // id_cuenta: req.user,
+        id_cuenta: req.user,
         id_usuario: req.user,
         direccion: req.body.direccion,
         no_tarjeta: req.body.no_tarjeta,
