@@ -44,6 +44,7 @@ const OrderRoutes = require('./Routes/OrderRoutes');
 const ListOrderRoutes = require('./Routes/ListOrderRoutes');
 const Shop = require('./Routes/ShopRoutes');
 const ConnectRutes = require('./Routes/ConnectRutes');
+const ReportsRoutes = require('./Routes/ReportsRoutes');
 
 //inicializaciones
 require('./Lib/Passport');
@@ -89,6 +90,7 @@ app.use("/api", OrderRoutes);
 app.use("/api", ListOrderRoutes);
 app.use("/api", Shop);
 app.use("/api", ConnectRutes);
+app.use("/api", ReportsRoutes);
 
 // app.use(express.static(__dirname+'/frontend/dist/frontend'));
 // app.get('/',function(req,res){
@@ -98,7 +100,6 @@ app.use("/api", ConnectRutes);
 app.use(express.static(__dirname+'/frontend/dist/frontend'));
 app.get('/',function(req, res){
     res.sendFile(path.join(__dirname+'/frontend/dist/frontend/index.html'));
-    console.log(__dirname,  "  asdfdfasd")
 });
 
 app.use('/images', express.static(path.resolve('images')));
@@ -106,7 +107,7 @@ app.use('/images', express.static(path.resolve('images')));
 
 server.listen(PORT, function(){
     console.log(`la app ha sido arrancada en ${PORT}`.yellow);
-    sequelize.sync({force: true}).then(() => {
+    sequelize.sync({force: false}).then(() => {
         console.log("Conexion a DB establecida".green);
     }).catch(error => {
         console.log("Se ha producido un error al momento de intentar conectar con la db".red,error);

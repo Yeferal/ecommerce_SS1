@@ -21,22 +21,22 @@ User.belongsTo(Account, { foreignKey: "id_cuenta" });
 User.hasMany(Order, {
     onDelete: 'CASCADE',
     foreignKey: {
-        name: 'id_cuenta',
+        name: 'id_usuario',
         allowNull: false
     }
 });
 
-Order.belongsTo(User, { foreignKey: "id_cuenta" });
+Order.belongsTo(User, { foreignKey: "id_usuario" });
 
 User.hasMany(Bill, {
     onDelete: 'CASCADE',
     foreignKey: {
-        name: 'id_cuenta',
+        name: 'cuenta_efectiva',
         allowNull: false
     }
 });
 
-Bill.belongsTo(User, { foreignKey: "id_cuenta" });
+Bill.belongsTo(User, { foreignKey: "cuenta_efectiva" });
 //Producto
 Product.hasMany(ListOrder, {
     onDelete: 'CASCADE',
@@ -73,12 +73,12 @@ ListOrder.belongsTo(Order, { foreignKey: "id_orden" });
 Bill.hasMany(Sale, {
     onDelete: 'CASCADE',
     foreignKey: {
-        name: 'id_factura',
+        name: 'no_factura',
         allowNull: false
     }
 });
 
-Sale.belongsTo(Bill, { foreignKey: "id_factura" })
+Sale.belongsTo(Bill, { foreignKey: "no_factura" })
 //Venta
 
 

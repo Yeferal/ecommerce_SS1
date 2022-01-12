@@ -7,17 +7,17 @@ const LoggerController = {};
 
 
 LoggerController.signup = (req,res,next) => {
-    console.log('da ',req.body);
+    console.log('da ',req.user);
     passport.authenticate('local.signup', function(err, user, info) {
       if (err) { return res.status(501).json(err); }
-      console.log('sss ',req.user);
+      // console.log('sss ',req.user);
       if (!user) { 
-        console.log('asdfa');  
-        return res.status(501).json(info); }
+        // console.log('asdfa');  
+        return res.status(200).json({message:'Ya existe un usuario con el mismo DPI'}); }
       req.logIn(user, function(err) {
         if (err) { return res.status(501).json(err); }
         console.log('registro');
-        return res.status(200).json({message:'SE REGISTRO'});
+        return res.status(200).json({message:'SE REGISTRO', result: true});
       });
     })(req, res, next);
 }

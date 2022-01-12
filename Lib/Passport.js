@@ -7,13 +7,13 @@ const AccountModel = require('../Model/Initialization/Account');
 const AccountController = require('../Controller/AccountController');
 
 passport.use('local.signup',new localStrategy({
-    usernameField: 'user',
+    usernameField: 'id_cuenta',
     passwordField: 'password',
     passReqToCallback: true
 },async (req, user, password, done) => {
     pass = await crypt.encryptPassword(password);
-    const usuario = await AccountModel.findOne({where:{user:user}});
-    console.log(usuario);
+    const usuario = await AccountModel.findOne({where:{id_cuenta:user}});
+    // console.log(usuario);
     if(usuario == undefined){
         const usr = await Account.createAccountLogger(req, pass); 
         await AccountController.createUser(req);

@@ -3,14 +3,14 @@ const Order = require('../Initialization/Order');
 const ListOrder = require('../Initialization/ListOrder');
 const User = require('../Initialization/User');
 const Product = require('../Initialization/Product');
-const { Op, DATE } = require("sequelize");
+const { Op } = require("sequelize");
 const Sale = require('../Initialization/Sale');
 const Bill = require('../Initialization/Bill');
 
 
 async function createOrder(req, res, total){
     return await Order.create({
-        id_cuenta: req.user,
+        // id_cuenta: req.user,
         id_usuario: req.user,
         direccion: req.body.direccion,
         no_tarjeta: req.body.no_tarjeta,
@@ -55,12 +55,13 @@ async function getAllListOneOrder(req, res){
 
 async function genFactura(req, res){
     const id_order = req.body.id_order;
+    console.log(req.body);
     let listOrders = await ListOrder.findAll({where: {id_orden: id_order}})
     let bill = await Bill.create({
         cuenta_efectiva: req.body.id_cuenta,
         fecha: Date.now(),
         total: req.body.total,
-        id_cuenta: req.body.id_cuenta,
+        // id_cuenta: req.body.id_cuenta,
     });
     
     await listOrders.forEach(listOr => {
@@ -70,7 +71,7 @@ async function genFactura(req, res){
             precio_unitario: listOr.precio_unitario,
             cantidad: listOr.cantidad,
             total: listOr.cantidad * listOr.precio_unitario,
-            id_factura: bill.no_factura
+            // id_factura: bill.no_factura
         });
     });
 

@@ -11,7 +11,7 @@ const Account = sequelize.define('Account', {
     user: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,  
+        // unique: true,  
     },
     fecha_creacion: {
         type: DataTypes.DATE,

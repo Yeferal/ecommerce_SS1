@@ -22,6 +22,8 @@ export class RegisterComponent implements OnInit {
     correo: new FormControl(null,[Validators.email,Validators.required])
   });
 
+  message: string = '';
+
   constructor(private sessionService: SessionService, private router: Router) { }
 
   ngOnInit(): void {
@@ -29,17 +31,25 @@ export class RegisterComponent implements OnInit {
 
   signUp(signUpForm: FormGroup){
     if(signUpForm.invalid){
+      this.message = 'Debe de llenar todos los campos'
       return ;
     }
-    console.log(signUpForm.value);
+    this.message = '';
+    // console.log(signUpForm.value);
     
     this.sessionService.postSignUp(signUpForm.value).subscribe(
       res => {
-        console.log(res);
-        this.router.navigate(['/home']);
+        // console.log(res);
+        if (res.result) {
+          this.router.navigate(['/home']);
+        } else {
+          this.message = res.message;
+        }
+        
       },
       error => {
         console.log(error);
+        this.message = 'Ocurrio un error al intenter crear la cuenta';
       }
     );
 

@@ -27,6 +27,7 @@ import { LogoCarouselSectionComponent } from './components/singles/logo-carousel
 import { FooterComponent } from './components/singles/footer/footer.component';
 import { CopyrigthComponent } from './components/singles/copyrigth/copyrigth.component';
 import { EnterGuard } from './guards/enter.guard';
+import { LoaderComponent } from './components/loader/loader.component';
 
 //END SERVICES
 
@@ -47,7 +48,8 @@ import { EnterGuard } from './guards/enter.guard';
     SearchAreaComponent,
     LogoCarouselSectionComponent,
     FooterComponent,
-    CopyrigthComponent
+    CopyrigthComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
