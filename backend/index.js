@@ -117,12 +117,13 @@ app.use("/api", Shop);
 // //p.use(Exchange);
 // app.use("/api",Contact);
 
-// app.use(express.static(__dirname+'/frontend/dist/View'));
-// app.get('/*',function(req,res){
-//     res.sendFile(path.join(__dirname+'/frontend/dist/View/index.html'));
-// });
+app.use(express.static(dirname+'/frontend/dist/frontend'));
+app.get('/',function(req, res){
+    res.sendFile(path.join(dirname+'/frontend/dist/frontend/index.html'));
+    console.log(__dirname,  " sss")
+});
 
-app.use('/images', express.static(path.resolve('images')));
+// app.use('/images', express.static(path.resolve('images')));
 
 
 server.listen(PORT, function(){
