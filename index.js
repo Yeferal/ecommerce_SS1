@@ -34,7 +34,7 @@ require('./Controller/Socket')(io);
 */
 
 //Db
-const sequelize = require("./Model/Db");
+const sequelize = require("./Model/db");
 const Models = require('./Model/CreateModels');
 
 const {database} = require('./key');
