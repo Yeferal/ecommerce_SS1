@@ -10,7 +10,7 @@ LoggerController.signup = (req,res,next) => {
     console.log('da ',req.body);
     passport.authenticate('local.signup', function(err, user, info) {
       if (err) { return res.status(501).json(err); }
-      console.log(req.user);
+      console.log('sss ',req.user);
       if (!user) { 
         console.log('asdfa');  
         return res.status(501).json(info); }
