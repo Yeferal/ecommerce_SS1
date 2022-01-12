@@ -107,7 +107,7 @@ app.get('/',function(req, res){
     console.log(__dirname,  " sss")
 });
 
-app.use('/images', express.static(path.resolve('images')));
+// app.use('/images', express.static(path.resolve('images')));
 
 
 server.listen(PORT, function(){
