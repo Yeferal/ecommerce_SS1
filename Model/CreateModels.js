@@ -6,6 +6,8 @@ const Product = require('./Initialization/Product');
 const Sale = require('./Initialization/Sale');
 const User = require('./Initialization/User');
 const Token = require('./Initialization/VerificationToken');
+const Auto = require('./Initialization/Auto');
+
 
 //Cuenta
 Account.hasOne(User, {
@@ -89,4 +91,9 @@ Account.hasMany(Token, {
         name: 'id_cuenta',
         allowNull: false 
     }
-})
+});
+
+// Auto.sync({force: true});
+// Auto.create({
+//     auto: false
+// });

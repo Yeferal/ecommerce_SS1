@@ -43,7 +43,9 @@
                             <tr *ngFor="let product of listProducts; let i = index" class="table-body-row">
                                 <!-- <form action=""> -->
                                 <td class="product-remove"><a (click)="deleteOne(i)"><i class="far fa-window-close"></i></a></td>
-                                <td class="product-image"><img [src]="URL_API+'/'+product.path_img" alt=""></td>
+                                <!-- <td class="product-image"><img [src]="URL_API+'/'+product.path_img" alt=""></td> -->
+                                <td class="product-image"><img src="../../../assets/undraw_photos_re_pvh3.svg" alt=""></td>
+                                <!-- <a [routerLink]="['/single-product', product.id_producto]"><img  alt=""></a> -->
                                 <td class="product-name">{{product.nombre}}</td>
                                 <td class="product-price">Q {{product.precio_unitario}}</td>
                                 <!-- {{formCuantity = new FormControl(null,null)}} -->

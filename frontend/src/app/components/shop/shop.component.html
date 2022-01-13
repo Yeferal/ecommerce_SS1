@@ -40,7 +40,8 @@
             <div *ngFor="let product of listProducts; let i=index" class="col-lg-4 col-md-6 text-center strawberry">
                 <div class="single-product-item">
                     <div class="product-image">
-                        <a [routerLink]="['/single-product', product.id_producto]"><img [src]="URL_API+'/'+product.path_img" alt=""></a>
+                        <!-- <a [routerLink]="['/single-product', product.id_producto]"><img [src]="URL_API+'/'+product.path_img" alt=""></a> -->
+                        <a [routerLink]="['/single-product', product.id_producto]"><img src="../../../assets/undraw_photos_re_pvh3.svg" alt=""></a>
                     </div>
                     <h3>{{product.nombre}}</h3>
                     <p class="product-price"><span>Unit</span> Q {{product.precio_unitario}} </p>

@@ -3,6 +3,7 @@ const express = require('express');
 const ListOrderController = require('../Controller/ListOrderController');
 const OrderController = require('../Controller/OrderController');
 const ReportController = require('../Controller/ReportController')
+const AutoController = require('../Controller/AutoController')
 const Router = express.Router();
 
 const {isLoggedIn, isNotLoggedIn} = require('../Lib/auth');
@@ -26,5 +27,9 @@ Router.get('/connect',(req, res) =>{
     console.log('dio')
     return res.status(200).json(true);
 });
+
+Router.get('/auto', AutoController.isExiste, AutoController.createAuto);
+
+Router.post('/auto', AutoController.updateAuto);
 
 module.exports = Router;

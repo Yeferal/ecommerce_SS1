@@ -51,16 +51,16 @@ require('./Lib/Passport');
 
 
 //middleware
-// const corsOptions = {origin: "http://localhost:4401"}
-// app.use(cors({
-//     origin: "http://localhost:4401",
-//     credentials: true
-// }));
-const corsOptions = {origin: "https://ss1-eccomerce.herokuapp.com/api"}
+const corsOptions = {origin: "http://localhost:4401"}
 app.use(cors({
-    origin: "https://ss1-eccomerce.herokuapp.com/api",
+    origin: "http://localhost:4401",
     credentials: true
 }));
+// const corsOptions = {origin: "https://ss1-eccomerce.herokuapp.com/api"}
+// app.use(cors({
+//     origin: "https://ss1-eccomerce.herokuapp.com/api",
+//     credentials: true
+// }));
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(bodyParser());
@@ -104,11 +104,14 @@ app.get('/',function(req, res){
 
 app.use('/images', express.static(__dirname+'/images'));
 
+// const AutoController = require('./Controller/AutoController');
 
 server.listen(PORT, function(){
     console.log(`la app ha sido arrancada en ${PORT}`.yellow);
     sequelize.sync({force: false}).then(() => {
         console.log("Conexion a DB establecida".green);
+        
+        // AutoController.isExiste();
     }).catch(error => {
         console.log("Se ha producido un error al momento de intentar conectar con la db".red,error);
     })
